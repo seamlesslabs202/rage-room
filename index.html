@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Rage Room</title>
+
+    <link rel="stylesheet" href="./style.css">
+
+<style>
+    html, body {
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+    }
+
+    canvas {
+        display: block;
+    }
+
+    #writeBox {
+    position: fixed;
+
+    left: 50%;
+    top: 50%;
+
+    transform: translate(-50%, -50%);
+
+    width: 60%;
+    height: 45%;
+
+    background: transparent;
+
+    border: none;
+    outline: none;
+
+    color: white;
+
+    font-family: Arial, sans-serif;
+    font-size: 22px;
+    line-height: 1.6;
+
+    resize: none;
+
+    text-align: left;
+
+    z-index: 10;
+
+    opacity: 1;
+    }
+
+    #writeBox::placeholder {
+        color: #555;
+    }
+
+    #letItOutButton {
+        position: fixed;
+
+        left: 50%;
+        bottom: 12%;
+
+        transform: translateX(-50%);
+
+        background: transparent;
+
+        border: 1px solid #444;
+
+        color: #aaa;
+
+        padding: 12px 28px;
+
+        font-size: 14px;
+
+        letter-spacing: 2px;
+
+        cursor: pointer;
+
+        z-index: 10;
+
+        transition: 0.3s;
+    }
+
+    #letItOutButton:hover {
+        color: white;
+        border-color: white;
+    }
+
+    #writeBackButton {
+        position: fixed;
+
+        left: 30px;
+        top: 30px;
+
+        background: transparent;
+
+        border: none;
+
+        color: #555;
+
+        font-size: 14px;
+
+        cursor: pointer;
+
+        z-index: 10;
+    }
+
+    #writeBackButton:hover {
+        color: white;
+    }
+</style>
+</head>
+
+<body style="margin:0;">
+
+    <canvas id="gameCanvas"></canvas>  
+    
+    <a
+        id="donateButton"
+        href="https://buymeacoffee.com/seamlessskp"
+        target="_blank"
+        rel="noopener noreferrer"
+    >
+        BUY ME A COFFEE ☕
+    </a>
+
+    
+    <div id="ventRoomSelection">
+
+        <h1 class="vent-room-heading">CHOOSE YOUR VENT SPACE</h1>
+
+        <p class="vent-room-subtitle">
+            Some things are better left unsaid. Others need to be heard.
+        </p>
+
+        <div class="vent-room-cards">
+
+            <!-- PRIVATE VENTSPACE -->
+            <div class="vent-room-card" id="privateVentCard">
+
+                <h2>PRIVATE VENTSPACE</h2>
+
+                <p>
+                    Let it out. Let it fade.
+                    Just you and your thoughts.
+                </p>
+
+                <span class="vent-room-action">ENTER YOUR SPACE →</span>
+            </div>
+
+            <!-- LIVE MULTIPLAYER -->
+            <div class="vent-room-card" id="liveVentCard">
+
+                <h2>VENT CHAT</h2>
+                <p>
+                    Your words. Their words.
+                    One wall. No judgement.
+                </p>
+
+                <span class="vent-room-action">JOIN THE CROWD →</span>
+            </div>
+
+        </div>
+
+        <p id="ventRoomNotice"></p>
+
+    </div>
+
+    <textarea
+        id="feelingsBox"
+        placeholder="Write your feelings out..."
+        maxlength="5000">
+    </textarea>
+
+    <textarea
+        id="ventBox"
+        placeholder="What's on your mind...?"
+        maxlength="5000">
+    </textarea>
+
+    <div id="ventMessage"></div>
+
+    <div id="scream-again-message" style="display: none;">
+    Let's <span id="scream-again-link">scream</span> again!
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="./js/main.js"></script>
+
+</body>
+</html>

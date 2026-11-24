@@ -1,0 +1,392 @@
+html,
+body {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+canvas {
+    display: block;
+    cursor: default;
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+}
+
+#donateButton {
+    top: 20px;
+    right: 25px;
+    position: fixed;
+    left: auto;
+    transform: translateX(-50%);
+    z-index: 100;
+
+    padding: 8px 10px;
+    background: transparent;
+    color: #e8dfd2;
+    border: 1px solid #e8dfd2;
+    border-radius: 3px;
+
+    width: auto;
+    max-width: fit-content;
+    padding: 5px 6px;
+    font-size: 10px;
+    letter-spacing: 0;
+    box-sizing: border-box;
+    white-space: nowrap;
+
+    font-family: Arial, sans-serif;
+    font-size: 10px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    text-decoration: none;
+
+}
+
+#donateButton:hover {
+    background: #e8dfd2;
+    color: #111318;
+}
+
+#feelingsBox {
+    display: none;
+    position: absolute;
+    top: 180px;
+    width: 500px;
+    height: 40px !important;
+    resize: none;
+    border: none;
+    outline: none;
+
+    background: rgba(18, 18, 28, 0.55);
+    color: #f2f0f5;
+
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    color: rgba(230, 225, 240, 0.65);
+    font-weight: 400;
+    line-height: 1.6;
+
+    text-align: left;
+    padding: 10px 12px 24px;
+    box-sizing: border-box;
+    border-radius: 8px;
+
+    overflow: auto;
+    scrollbar-width: none;
+}
+
+#feelingsBox::-webkit-scrollbar {
+    display: none;
+}
+
+#feelingsBox::placeholder {
+    font-size: 14px;
+    color: rgba(230, 225, 240, 0.65);
+}
+
+.feelings-disappear {
+  animation: dissolveIntoDark 1.2s ease-in forwards;
+  transform-origin: center center;
+  pointer-events: none;
+}
+
+@keyframes dissolveIntoDark {
+  0% {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  60% {
+    opacity: 0.35;
+    transform: scale(0.45);
+  }
+
+  100% {
+    opacity: 0;
+    transform: scale(0);
+  }
+}
+
+.after-scream-message {
+  display: none;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  color: #ffffff;
+  font-family: "Oswald", sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  text-align: center;
+  white-space: nowrap;
+  pointer-events: none;
+}
+
+.after-scream-message.show-message {
+  animation: messageFadeIn 1s ease forwards;
+} 
+
+@keyframes messageFadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+#scream-again-message {
+  position: absolute;
+  left: 40%;
+  top: 80%;
+  color: #ffffff;
+  font-family: "Oswald", sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  text-align: center;
+}
+
+#scream-again-link {
+  cursor: pointer;
+}
+
+#scream-again-link:hover {
+  text-decoration: underline;
+}
+
+#ventBox {
+    display: none;
+    position: absolute;
+    top: 180px;
+    left: 50%;
+
+    width: 500px;
+    height: 40px !important;
+    resize: none;
+    
+    border: none;
+    outline: none;
+
+    background: rgba(18, 18, 28, 0.55);
+    color: #D3D3D3;
+
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 1.6;
+
+    text-align: left;
+    padding: 10px 12px 24px;
+
+    box-sizing: border-box;
+    border-radius: 8px;
+
+    overflow: auto;
+    scrollbar-width: none;
+}
+
+#ventBox::placeholder {
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.65);
+    
+    text-align: left;
+}
+
+#ventBox::-webkit-scrollbar {
+    display: none;
+}
+
+#ventMessage {
+    display: none;
+    position: absolute;
+
+    width: 75%;
+    color: #99ff6a;
+    box-sizing: border-box;
+
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 24px;
+    font-weight: 400;
+    line-height: 1.6;
+
+    text-align: center;
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    z-index: 10;
+    opacity: 0;
+}
+
+#ventMessage.show {
+    display: block;
+    animation: ventFade 8s linear forwards;
+}
+
+@keyframes ventFade {
+    0% {
+        opacity: 0;
+    }
+
+    12.5% {
+        opacity: 1;
+    }
+
+    87.5% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
+
+
+#ventRoomSelection {
+    position: absolute;
+    inset: 0;
+    z-index: 20;
+
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    padding: 40px 5%;
+    box-sizing: border-box;
+
+    background: #111318;
+    color: #f2f0f5;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.vent-room-heading {
+    margin: 0 0 12px;
+    font-size: clamp(28px, 4vw, 48px);
+    letter-spacing: 3px;
+    text-align: center;
+}
+
+.vent-room-subtitle {
+    margin: 0 0 42px;
+    color: #aaa5b5;
+    font-size: 15px;
+    text-align: center;
+}
+
+.vent-room-cards {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 24px;
+
+    width: 100%;
+    max-width: 950px;
+}
+
+.vent-room-card {
+    min-height: 270px;
+    padding: 30px;
+    box-sizing: border-box;
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+    background: #191a22;
+    border: 1px solid #383442;
+    border-radius: 12px;
+
+    cursor: pointer;
+    transition:
+        transform 0.25s ease,
+        border-color 0.25s ease,
+        background 0.25s ease;
+}
+
+.vent-room-card:hover {
+    transform: translateY(-6px);
+    border-color: #a78bfa;
+    background: #20202c;
+}
+
+.vent-room-card h2 {
+    margin: 0 0 12px;
+    font-size: 22px;
+    letter-spacing: 1px;
+}
+
+.vent-room-card p {
+    color: #b8b4c2;
+    line-height: 1.7;
+    font-size: 14px;
+}
+
+.vent-room-action {
+    margin-top: auto;
+    padding-top: 25px;
+    color: #d8b4fe;
+    font-size: 12px;
+    letter-spacing: 1px;
+}
+
+#ventRoomNotice {
+    color: #b8b4c2;
+    font-size: 13px;
+    text-align: center;
+}
+
+@media (max-width: 650px) {
+    #ventRoomSelection {
+        overflow-y: auto;
+        justify-content: flex-start;
+    }
+
+    .vent-room-cards {
+        grid-template-columns: 1fr;
+    }
+
+    .vent-room-card {
+        min-height: 220px;
+    }
+
+    .vent-room-card h2 {
+        margin-top: 20px;
+    }
+}
+
+
+.vent-live-message {
+    position: fixed;
+    transform: translate(-50%, -50%);
+    width: min(70vw, 700px);
+    text-align: center;
+    overflow-wrap: anywhere;
+    white-space: pre-wrap;
+    font-family: Arial, sans-serif;
+    font-size: 20px;
+    line-height: 1.5;
+    pointer-events: none;
+    z-index: 30;
+    animation: ventFade 8s linear forwards;
+}
+
+@keyframes ventFade {
+    0% {
+        opacity: 0;
+    }
+
+    12.5% {
+        opacity: 1;
+    }
+
+    87.5% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
